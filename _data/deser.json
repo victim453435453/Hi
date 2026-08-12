@@ -1,0 +1,5 @@
+{
+  "test": "json loaded",
+  "__class__": "Gem::Installer",
+  "payload": "id"
+}

